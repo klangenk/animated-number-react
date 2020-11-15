@@ -16,6 +16,7 @@ class AnimatedNumber extends Component {
     update: PropTypes.func,
     easing: PropTypes.string,
     className: PropTypes.string,
+    wrapSpan: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -28,6 +29,7 @@ class AnimatedNumber extends Component {
     begin: defaultFunction,
     delay: 0,
     className: null,
+    wrapSpan: true
   };
 
   state = {
@@ -71,6 +73,9 @@ class AnimatedNumber extends Component {
   };
 
   render() {
+    if (!this.props.wrapSpan) {
+      return this.props.formatValue(Number(this.state.animatedValue))
+    }
     return (
       <span className={this.props.className}>
         {this.props.formatValue(Number(this.state.animatedValue))}
