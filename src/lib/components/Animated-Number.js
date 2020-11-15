@@ -73,12 +73,11 @@ class AnimatedNumber extends Component {
   };
 
   render() {
-    if (!this.props.wrapSpan) {
-      return this.props.formatValue(Number(this.state.animatedValue))
-    }
+    const value = this.props.formatValue(Number(this.state.animatedValue))
+    if (!this.props.wrapSpan) return value
     return (
       <span className={this.props.className}>
-        {this.props.formatValue(Number(this.state.animatedValue))}
+        {value}
       </span>
     );
   }
